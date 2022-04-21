@@ -23,7 +23,17 @@ class SayGoodbyeHandler extends Handler{
 
 The request parameter will give You access to everything needed. You should always return a new response.
 
+Create a new conf class
+
+```typescript
+
+let confs = new AppConfigs();
+confs.port = 3000;
+
+```
+
 After that: the creation of Your handler it's time to create an application context, and map a route to your handler and add to the app context:
+
 
 ```typescript
 //create a new AppContext
