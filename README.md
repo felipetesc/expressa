@@ -32,14 +32,14 @@ confs.port = 3000;
 
 ```
 
-After that: the creation of Your handler it's time to create an application context, and map a route to your handler and add to the app context:
+After that (read the comments below):
 
 
 ```typescript
 //create a new AppContext
 const appCtx = new AppContext();
 
-//add to the app context a new new route handler
+//add to the app context a new route to your handler
 appCtx.appendRouteHandler("/goodbye", new SayGoodbyeHandler());
 
 //Run your application
