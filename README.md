@@ -4,7 +4,7 @@ To use this micro lib you can import from deno.land or directly from github, lik
 
 Installation:
 ```typescript
-  import { * } "https://deno.land/x/expressa@v0.0.1-alpha/mod.ts";
+  import { Handler, AppContext, AppConfigs, Expressa } from "https://raw.githubusercontent.com/felipetesc/expressa/v0.0.3/mod.ts";
 ```
 
 ## Quick start:
