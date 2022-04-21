@@ -8,6 +8,9 @@ class SayGoodbyeHandler extends Handler{
     }
 }
 
+let confs = new AppConfigs();
+confs.port = 3000;
+
 const appCtx = new AppContext();
 appCtx.appendRouteHandler("/goodbye", new SayGoodbyeHandler());
-Expressa.run(AppConfigs.APP_PORT, appCtx);
+Expressa.run(confs, appCtx);

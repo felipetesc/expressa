@@ -35,9 +35,4 @@ appCtx.appendRouteHandler("/goodbye", new SayGoodbyeHandler());
 //Run your application
 Expressa.run(AppConfigs.APP_PORT, appCtx);
 
-<<<<<<< HEAD
 ```
-=======
-```
-
->>>>>>> e329c9c5ea5edbe607a3fcb16c80a00477e44dca

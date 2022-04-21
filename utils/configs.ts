@@ -1,20 +1,21 @@
 class AppConfigs{
     
-    static APP_PORT : number;
-    static APP_NAME : string;
-    static APP_VERSION : string;
-    static APP_AUTHOR : string;
-    static APP_LICENSE : string;
+    public port : number = 3000;
+    public name : string = "eXpressa";
+    public version : string = "0.0.1";
+    public author : string =  "expressa";
+    public license : string = "Mit";
+    public database : DatabaseConfigs | undefined;
 
 }
 
 class DatabaseConfigs{
     
-    static DATABASE_NAME : string;
-    static DATABASE_HOST : string;
-    static DATABASE_PORT : number;
-    static DATABASE_USER : string;
-    static DATABASE_PASS : string;
+    name? : string;
+    host? : string;
+    port? : number;
+    user? : string;
+    pass? : string;
   
 }
 

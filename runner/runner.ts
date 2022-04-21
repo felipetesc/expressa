@@ -1,6 +1,6 @@
 
 import { serve, parse, format } from "../deps/deps.ts";
-
+import { AppConfigs } from "../utils/configs.ts";
 import { AppContext , DefaultErrHandler } from "../handlers/handlers.ts";
 
 class Expressa{
@@ -14,10 +14,12 @@ class Expressa{
     return server;
   }
 
-  static async run(port : number, ctx : AppContext, safeExit : boolean = true ){
+  static async run(configs: AppConfigs, ctx : AppContext, safeExit : boolean = true ){
     
+    configs.port = configs.port !== undefined ? configs.port : 3000; 
+
     const errHandler = new DefaultErrHandler();
-      const server = Expressa.create(port);
+    const server = Expressa.create(configs.port);
       
       for await (const conn of server) {
       (async () => {
@@ -49,20 +51,21 @@ class Expressa{
 
 }
 
-function ServerBuilder(port : number) : Deno.Listener{
-  const PORT = port;
-  const server = Deno.listen({ port: PORT });
+function ServerBuilder(configs : AppConfigs) : Deno.Listener{
+  configs.port = configs.port !== undefined ? configs.port : 3000; 
+  const server = Deno.listen({ port: configs.port });
   let getUTCDate = new Date();
   let NOW = format(getUTCDate, "dd-MM-yyyy"); 
-  console.log(`Starting server at port: ${PORT} at ${NOW}`);
+  console.log(`Starting server at port: ${configs.port} at ${NOW}`);
   return server;
 }
 
 
-async function RunForever(port : number, ctx : AppContext, safeExit : boolean = true ){
+async function RunForever(configs: AppConfigs, ctx : AppContext, safeExit : boolean = true ){
     
   const errHandler = new DefaultErrHandler();
-    const server = ServerBuilder(port);
+  
+    const server = ServerBuilder(configs);
     
     for await (const conn of server) {
     (async () => {
