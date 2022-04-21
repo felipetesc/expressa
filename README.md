@@ -1,6 +1,8 @@
-# expressa
+# Expressa
 
-To use this micro lib you can import from deno.land or directly from github, like so
+
+
+To use this micro lib you can import from github, like so:
 
 Installation:
 ```typescript
