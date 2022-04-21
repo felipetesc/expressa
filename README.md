@@ -1,5 +1,6 @@
 # expressa
 
+To use this micro lib you can import from deno.land or directly from github, like so
 
 Installation:
 ```typescript
@@ -8,15 +9,13 @@ Installation:
 
 ## Quick start:
 
-Start by creating a new handler, such as:
+First import the lib like we showed above, than create a new handler, such as:
 
 ```typescript
-import {Handler} from "https://deno.land/x/expressa@v0.0.1-alpha/mod.ts";
 
-export class SayGoodbyeHandler extends Handler{
+class SayGoodbyeHandler extends Handler{
     handler(request: Request): Response {
       let body = "Goodbye";
-      
       return new Response(body, { status: 200 });
     }
 }
@@ -24,32 +23,17 @@ export class SayGoodbyeHandler extends Handler{
 
 The request parameter will give You access to everything needed. You should always return a new response.
 
-After the creation of Your handler(s) it's time to add them to your application context and create a relation to a certain path. Before doing that though, we need to create a new application context:
+After that: the creation of Your handler it's time to create an application context, and map a route to your handler and add to the app context:
 
 ```typescript
-
-import { AppContext, RunApp } from "https://deno.land/x/expressa@v0.0.1-alpha/mod.ts";
+//create a new AppContext
 const appCtx = new AppContext();
 
-```
-Once we have the AppContext, we add to it a new route and Handler, like so:
+//add to the app context a new new route handler
+appCtx.appendRouteHandler("/goodbye", new SayGoodbyeHandler());
 
-```typescript
-
-appCtx.appendRouteHandler("/goodbye", new SayHelloHandler())
-
-```
-
-Finally, we run the application:
-
-```typescript
-
-RunApp(ExpressaConfigs.APP_PORT, appCtx);
+//Run your application
+Expressa.run(AppConfigs.APP_PORT, appCtx);
 
 ```
-
-
-
-
-
 
